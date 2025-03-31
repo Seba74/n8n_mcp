@@ -1,0 +1,16 @@
+services:
+  n8n:
+    build: .
+    restart: always
+    ports:
+      - "5678:5678"
+    environment:
+      - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
+      - NODE_FUNCTION_ALLOW_EXTERNAL=*
+      - N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true
+      - MCP_BRAVE_API_KEY=BSALlBoimbUoUmwZ3Wn8wdvEKISuTJa
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ${DATA_FOLDER}/local_files:/files
+volumes:
+  n8n_data:
